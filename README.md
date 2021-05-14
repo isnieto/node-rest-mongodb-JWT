@@ -1,4 +1,4 @@
-# Node REST Server + MongoDb
+# Node REST Server + MongoDb + JWT
 
 Goal of the project is to build a API server that supports a simple dice game.
 Following features have been taken in considereation to build the API:
