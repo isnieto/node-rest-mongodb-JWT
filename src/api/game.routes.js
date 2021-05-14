@@ -5,8 +5,10 @@ module.exports = (app) => {
   
 
   // Register new player
-  //app.post("/", gameController.registerOne);
-
+  app.post("/auth/signup", gameController.registerOne);
+  
+  // Login for player
+  app.post("/auth/signin", gameController.signOne);
 
   // ADD  a new player
   app.post("/players", gameController.createOne);
