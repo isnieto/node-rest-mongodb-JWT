@@ -4,6 +4,10 @@ const gameController = require("./game.controller.js");
 module.exports = (app) => {
   
 
+  // Register new player
+  //app.post("/", gameController.registerOne);
+
+
   // ADD  a new player
   app.post("/players", gameController.createOne);
 

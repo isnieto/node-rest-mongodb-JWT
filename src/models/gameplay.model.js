@@ -9,12 +9,14 @@ module.exports = mongoose.model("gamePlayer", {nickName: String});
 const playerSchema = new mongoose.Schema({
   playerId: Number,
   nickName: String,
+  email: String,
+  password: String,
   registeredAt: { type: Date, default: Date.now },
   games: [
     {
       gameDate: { type: Date, default: Date.now },
       score: Number,
-      result: Boolean,
+     
     },
   ],
 });

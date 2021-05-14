@@ -24,7 +24,9 @@ Following features have been taken in considereation to build the API:
 ## Features
 
 Methods	Urls	Actions
-* POST    /players     				        > Add/Create a new player
+* POST    /                           > Signup new Player
+* POST    /login                      > Login for Players
+* POST    /players     				  > Add/Create a new player
 * PUT     /players                    > Update/Modify the name of an existing 
 * POST    /players/{id}/games/        > A player plays one round.
 * DELETE  /players/{id}/games         > Delete all rounds of a player

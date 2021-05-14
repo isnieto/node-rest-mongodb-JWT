@@ -10,9 +10,9 @@ require("./api/game.routes.js")(app);
 
 // Listen to server and connection established
 app.listen(PORT, () => {
-  console.log("Server started and running on port: " + PORT);
+  console.log(`Server started and running on port: ${PORT}`);
   if (conn){
-    console.log("MongoDB database connection established succesfully")
+    console.log(`MongoDB database (${conn}) connection established succesfully`)
   }
 });
 
