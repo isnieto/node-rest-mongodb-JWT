@@ -4,7 +4,10 @@ const app = require("./app");
 const { PORT } = require("./config/index.js");
 // Confirm connection
 const conn = require("./config/db.connection")
-// IMport app module
+
+
+// Load routes
+require("./api/auth.routes.js")(app);
 require("./api/game.routes.js")(app);
 
 

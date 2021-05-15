@@ -4,8 +4,10 @@ const Services = require("../services/games.services");
 
 //  Player class and use the database connection above to add  CRUD methods:
 class Player {
-  constructor(playerName) {
+  constructor(playerName, email, password) {
     this.nickName = playerName;
+    this.email = email;
+    this.password = password
   }
 
   // Check if PlayerName already exists in database
@@ -23,10 +25,12 @@ class Player {
   }
 
   // Create new Player after counting how many palyer to assign to idNr.
-  static async newPlayer(playerName) {
+/*   static async newPlayer(playerName) {
     const player = new GamePlayer({
       playerId: (await GamePlayer.find().countDocuments()) + 1, // add user index
       nickName: `${playerName}`,
+      email: `${playerName}`,
+      password: `${playerName}`,
     });
     //console.log(player);
     try {
@@ -35,7 +39,7 @@ class Player {
     } catch (error) {
       return error;
     }
-  }
+  } */
 
   // Retrieve list of all players
   static async getAllPlayers() {

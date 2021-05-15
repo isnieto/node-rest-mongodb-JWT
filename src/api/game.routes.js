@@ -3,13 +3,6 @@ const gameController = require("./game.controller.js");
 
 module.exports = (app) => {
   
-
-  // Register new player
-  app.post("/auth/signup", gameController.registerOne);
-  
-  // Login for player
-  app.post("/auth/signin", gameController.signOne);
-
   // ADD  a new player
   app.post("/players", gameController.createOne);
 
@@ -36,7 +29,6 @@ module.exports = (app) => {
 
   // Retrieve worst player
   app.get("/players/ranking/best", gameController.findBest);
-
  
 
   // Page not available

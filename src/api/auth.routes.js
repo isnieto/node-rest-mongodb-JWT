@@ -1,5 +1,5 @@
-const { checkDuplicates } = require("../middlewares");
-const controller = require("../controllers/auth.controller");
+const { checkDuplicates } = require("../middleware/index");
+const authController = require("../api/auth.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -10,13 +10,13 @@ module.exports = function(app) {
     next();
   });
 
-  app.post(
-    "/api/auth/signup",
-    [
-        checkDuplicates
-    ],
-    controller.signup
-  );
-
-  app.post("/api/auth/signin", controller.signin);
+   // Register new player
+   app.post("/auth/signup", [checkDuplicates], authController.registerOne);
+  
+   // Login for player
+   app.post("/auth/signin", authController.signOne);
+ 
 };
+
+
+ 
