@@ -16,7 +16,6 @@ const playerSchema = new mongoose.Schema({
     {
       gameDate: { type: Date, default: Date.now },
       score: Number,
-     
     },
   ],
 });

@@ -1,9 +1,10 @@
 // Load Game play model
+const config = require("../config/auth.config.js");
 const GamePlayer = require("../models/gameplay.model.js");
 
-module.exports = {
-  checkDuplicates: async (req, res, next) => {
-    try {
+const checkDuplicates = async (req, res, next) => {
+  
+     try {
       // Check if UserName  already exists
       GamePlayer.findOne({ nickName: `${req.body.nickName}` }, (err, res) => {
         // If Name no exists response is false
@@ -29,14 +30,15 @@ module.exports = {
               message: `Failed! Email ${req.body.email} is already in use!`,
             });
             return;
-           
           }
         });
-        next();
       });
+      next();
     } catch (err) {
       res.status(500).send({ message: err });
       return;
     }
-  },
-};
+  }
+
+
+  module.exports = checkDuplicates;

@@ -3,7 +3,7 @@
 // then use jsonwebtoken's verify() function
 
 const jwt = require("jsonwebtoken");
-const config = require("../config/auth.config.js");
+
 
 module.exports = {
   verifyToken: (req, res, next) => {

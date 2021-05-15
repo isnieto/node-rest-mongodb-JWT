@@ -9,7 +9,7 @@ module.exports = {
   registerOne: async (req, res) => {
     try {
       const player = new Player({
-        playerId: GamePlayer.find().countDocuments() + 1,
+        playerId: await GamePlayer.find().countDocuments() + 1,
         nickName: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
