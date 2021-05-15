@@ -5,6 +5,7 @@ const Services = require("../services/games.services");
 //  Player class and use the database connection above to add  CRUD methods:
 class Player {
   constructor(playerName, email, password) {
+    //this.playerId =  JSON.stringify((GamePlayer.find().countDocuments() + 1));
     this.nickName = playerName;
     this.email = email;
     this.password = password
@@ -23,23 +24,6 @@ class Player {
       });
     });
   }
-
-  // Create new Player after counting how many palyer to assign to idNr.
-/*   static async newPlayer(playerName) {
-    const player = new GamePlayer({
-      playerId: (await GamePlayer.find().countDocuments()) + 1, // add user index
-      nickName: `${playerName}`,
-      email: `${playerName}`,
-      password: `${playerName}`,
-    });
-    //console.log(player);
-    try {
-      const res = await player.save();
-      return res;
-    } catch (error) {
-      return error;
-    }
-  } */
 
   // Retrieve list of all players
   static async getAllPlayers() {
@@ -172,7 +156,6 @@ class Player {
           {},
           { _id: 0, playerId: 1, nickName: 1, games: { score: 1 } }
         );
-        console.log("hasta aqui");
         const results = await Services.getRankingPlayer(docs, true);
         // If no data in database
         if (Object.keys(docs).length === 0) {

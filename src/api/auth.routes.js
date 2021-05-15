@@ -1,5 +1,5 @@
-//const { checkDuplicates } = require("../middleware/index");
-const checkDuplicates = require("../middleware/signUpCheck")
+const { checkDuplicates } = require("../middleware/index");
+//const checkDuplicates = require("../middleware/signUpCheck")
 const authController = require("../api/auth.controller");
 
 

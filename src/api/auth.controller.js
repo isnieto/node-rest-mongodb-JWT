@@ -6,16 +6,16 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   // Create one player
-  registerOne: async (req, res) => {
+    registerOne:  async (req, res) => {
     try {
-      const player = new Player({
-        playerId: await GamePlayer.find().countDocuments() + 1,
-        nickName: req.body.username,
+      const player = new GamePlayer({
+        playerId: (await GamePlayer.find().countDocuments()) + 1, // add user index
+        nickName: req.body.name,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8),
+        password:  bcrypt.hashSync(req.body.password, 8)
       });
-      const res = player.save();
-      return res;
+      const result = await player.save();
+      return res.status(201).json({message: "New Player added"});
     } catch (error) {
       return error;
     }
@@ -23,40 +23,39 @@ module.exports = {
 
   signIn: async (req, res) => {
     Player.findOne({
-      nickName: req.body.username
+      nickName: req.body.username,
     }).exec((err, player) => {
-        if (err) {
-          res.status(500).send({ message: err });
-          return;
-        }
-  
-        if (!player) {
-          return res.status(404).send({ message: "player Not found." });
-        }
-  
-        var passwordIsValid = bcrypt.compareSync(
-          req.body.password,
-          player.password
-        );
-  
-        if (!passwordIsValid) {
-          return res.status(401).send({
-            accessToken: null,
-            message: "Invalid Password!"
-          });
-        }
-  
-        var token = jwt.sign({ id: player.id }, config.secret, {
-          expiresIn: 86400 // 24 hours
-        });
-  
-        res.status(200).send({
-          id: player._id,
-          username: player.username,
-          email: player.email,
-          accessToken: token
-        });
-      });
-    }
-}
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
 
+      if (!player) {
+        return res.status(404).send({ message: "player Not found." });
+      }
+
+      var passwordIsValid = bcrypt.compareSync(
+        req.body.password,
+        player.password
+      );
+
+      if (!passwordIsValid) {
+        return res.status(401).send({
+          accessToken: null,
+          message: "Invalid Password!",
+        });
+      }
+
+      var token = jwt.sign({ id: player.id }, config.secret, {
+        expiresIn: 86400, // 24 hours
+      });
+
+      res.status(200).send({
+        id: player._id,
+        username: player.username,
+        email: player.email,
+        accessToken: token,
+      });
+    });
+  },
+};

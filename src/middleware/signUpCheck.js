@@ -1,44 +1,45 @@
+'use strict';
 // Load Game play model
 const config = require("../config/auth.config.js");
 const GamePlayer = require("../models/gameplay.model.js");
 
 const checkDuplicates = async (req, res, next) => {
-  
-     try {
-      // Check if UserName  already exists
-      GamePlayer.findOne({ nickName: `${req.body.nickName}` }, (err, res) => {
+  try {
+    if (
+      Object.keys(req.body).length === 0 ||
+      req.body.name === "" ||
+      req.body.email === ""
+    ) {
+      res
+        .status(400)
+        .send({ message: "Sorry, nickname and email are needed to signUp!" });
+    } else {
+
+       GamePlayer.findOne({ nickName: `${req.body.name}` }, 
+       (err, res) => {
         // If Name no exists response is false
         if (err) {
-          res.status(500).send({ message: err });
-          return;
+          
+          res = res.status(500).send({ message: err });
+          return res;
         }
-        if (res) {
-          res.status(400).send({
-            message: `Failed! Username ${req.body.nickName} is already in use!`,
-          });
-          return;
-        }
-        // Check if Email  already exists
-        GamePlayer.findOne({ nickName: `${req.body.email}` }, (err, res) => {
-          // If Name no exists response is false
-          if (err) {
-            res.status(500).send({ message: err });
-            return;
-          }
-          if (res) {
-            res.status(400).send({
-              message: `Failed! Email ${req.body.email} is already in use!`,
-            });
-            return;
-          }
-        });
+        console.log(res)
+        if (res === null) {
+          next();
+        } else{
+          let x = { message: "Failed! Username is already in use!" };
+          console.log(x)
+          return x;
+        } 
+       
       });
-      next();
-    } catch (err) {
-      res.status(500).send({ message: err });
-      return;
+     
     }
+   
+  } catch (e) {
+    res.status(500).json({ message: e });
   }
+  
+};
 
-
-  module.exports = checkDuplicates;
+module.exports = checkDuplicates;
