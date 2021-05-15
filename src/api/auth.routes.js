@@ -1,7 +1,7 @@
-const { checkDuplicates } = require("../middleware/index");
+//const { checkDuplicates } = require("../middleware/index");
 const authController = require("../api/auth.controller");
 
-module.exports = function(app) {
+module.exports = (app) => {
   app.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
@@ -11,10 +11,9 @@ module.exports = function(app) {
   });
 
    // Register new player
-   app.post("/auth/signup", [checkDuplicates], authController.registerOne);
-  
+   app.post("/auth/signup", authController.registerOne);
    // Login for player
-   app.post("/auth/signin", authController.signOne);
+   //app.post("/auth/signin", authController.sign);
  
 };
 

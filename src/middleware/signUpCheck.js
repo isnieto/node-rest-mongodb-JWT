@@ -29,13 +29,14 @@ module.exports = {
               message: `Failed! Email ${req.body.email} is already in use!`,
             });
             return;
+           
           }
         });
+        next();
       });
     } catch (err) {
       res.status(500).send({ message: err });
       return;
     }
-    next();
   },
 };
