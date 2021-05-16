@@ -89,7 +89,7 @@ module.exports = {
     }
   },
 
-  // Retrieve all players from database FALTA percentage mig
+  // Retrieve all players from database 
   findAll: async (req, res) => {
     try {
       let results = await Player.getAllPlayers();
@@ -131,7 +131,6 @@ module.exports = {
   findRanking: async (req, res) => {
     try {
       const results = await Player.getRankingAll();
-      //console.log("devuelve result" + results)
       res.status(200).send(results);
     } catch (e) {
       res.status(500).json({ message: e });
