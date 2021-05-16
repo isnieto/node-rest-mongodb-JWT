@@ -29,7 +29,10 @@ const checkDuplicates = async (req, res, next) => {
             message: `Failed! Username ${req.body.name} is already in use!`,
           };
           console.log(x);
-          return x;
+          res.status(400).send({
+            message: `Failed! Username ${req.body.name} is already in use!`,
+          });
+          return;
         }
 
         // Check in database if email already there
