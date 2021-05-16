@@ -21,7 +21,7 @@ Following features have been taken in considereation to build the API:
 - [Node](https://nodejs.org/es/)
 - [Express](https://expressjs.com/es/)
 - [MongoDB](https://www.mongodb.com/)
-- [JWT] (https://jwt.io/introduction)
+- [JWT](https://jwt.io/introduction)
 
 ## Features
 All urls need authorization through JWT method:
