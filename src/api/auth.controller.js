@@ -51,7 +51,6 @@ module.exports = {
             message: "Invalid Password!",
           });
         }
-
         const token = jwt.sign({ id: player.id }, config.SECRET, {
           expiresIn: 86400, // 24 hours
         });

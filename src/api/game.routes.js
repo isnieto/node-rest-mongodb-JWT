@@ -3,9 +3,7 @@ const gameController = require("./game.controller.js");
 
 module.exports = (app) => {
   
-  // ADD  a new player
-  app.post("/players", gameController.createOne);
-
+  
   // Modify player name
   app.put("/players", gameController.updateOne);
   

@@ -4,37 +4,6 @@ const Services = require("../services/games.services.js");
 // Retrieve all games from the database.
 
 module.exports = {
-  // Create one player
-  createOne: async (req, res) => {
-    // if content empty or no content player saved as anonymus
-    if (
-      Object.keys(req.body).length === 0 ||
-      req.body.name === "" ||
-      req.body.name === " "
-    ) {
-      await Player.newPlayer("Anonimo").catch((e) => e);
-      res.status(201).json({ message: "New player added as ANONIMUS" });
-    } else {
-      try {
-        let checked = await Player.checkIfPlayerExists(req.body.name).catch(
-          (e) => e
-        );
-        if (checked) {
-          // Count number of players in DB to set playerId
-          await Player.newPlayer(req.body.name);
-          res.status(201).json({
-            message: `New player '${req.body.name}' succesfully added in database.`,
-          });
-        } else {
-          res.status(501).json({
-            message: `Sorry, but player '${req.body.name}' already exists in database.`,
-          });
-        }
-      } catch (e) {
-        res.status(500).json({ message: e });
-      }
-    }
-  },
 
   // Update name of player by ID
   updateOne: async (req, res) => {
