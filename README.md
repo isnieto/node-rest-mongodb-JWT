@@ -21,13 +21,14 @@ Following features have been taken in considereation to build the API:
 - [Node](https://nodejs.org/es/)
 - [Express](https://expressjs.com/es/)
 - [MongoDB](https://www.mongodb.com/)
-- [JWT] (https://jwt.io/introduction)
+- [JWT]( (https://jwt.io/introduction)
 
 ## Features
+All urls need authorization through JWT method:
 
-Methods	Urls	Actions
+Methods     	Urls	                       Actions
 * POST    /auth/signup                > Signup new Player
-* POST    /auth/signin               > Login for Players
+* POST    /auth/signin                 > Login for Players
 * PUT     /players                    > Update/Modify the name of an existing 
 * POST    /players/{id}/games/        > A player plays one round.
 * DELETE  /players/{id}/games         > Delete all rounds of a player
