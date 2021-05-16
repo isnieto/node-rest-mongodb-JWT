@@ -2,9 +2,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const schema = new Schema({nickName: String});
 // Create model and exports it
-module.exports = mongoose.model("gamePlayer", {nickName: String});
 
 const playerSchema = new mongoose.Schema({
   playerId: Number,
@@ -16,7 +14,6 @@ const playerSchema = new mongoose.Schema({
     {
       gameDate: { type: Date, default: Date.now },
       score: Number,
-     
     },
   ],
 });

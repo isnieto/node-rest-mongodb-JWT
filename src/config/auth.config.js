@@ -5,6 +5,5 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports = {
-  PORT: process.env.PORT || 5000,
-  SECRET: process.env.ACCESS_TOKEN_SECRET
+  SECRET:"secret",
 };
