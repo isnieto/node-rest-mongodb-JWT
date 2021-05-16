@@ -52,6 +52,8 @@ The project try to implement best practices following the following structure:
     <img src="https://github.com/uzs7jf/node-rest-mysql/blob/master/public/rest-api-structure.png">
 </p>
 
+
+### Testing with Postman
 A legal JWT must be added to HTTP __x-access-token Header__ for all Client accesses protected resources like following:
 
 <p align="center">
