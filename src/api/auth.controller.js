@@ -1,3 +1,5 @@
+// Functions for registering a new player and for authorized login
+// Load necessary modules
 const config = require("../config/auth.config");
 const GamePlayer = require("../models/gameplay.model.js");
 const Player = require("../models/player.model.js");
@@ -15,16 +17,14 @@ module.exports = {
         password:  bcrypt.hashSync(req.body.password, 8)
       });
       const result = await player.save();
-      return res.status(201).json({message: "New Player added"});
+      return res.status(201).json({message: "New Player has been registered succesfully"});
     } catch (error) {
       return error;
     }
   },
 
   signIn: async (req, res) => {
-    Player.findOne({
-      nickName: req.body.username,
-    }).exec((err, player) => {
+    Player.findOne({nickName: req.body.name}, (err, player) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
@@ -57,5 +57,7 @@ module.exports = {
         accessToken: token,
       });
     });
-  },
+  }
+
+
 };

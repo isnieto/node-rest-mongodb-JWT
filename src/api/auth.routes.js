@@ -1,5 +1,6 @@
+// Load middleware module to check if player name and email already exists
+// otherwise go ahead
 const { checkDuplicates } = require("../middleware/index");
-//const checkDuplicates = require("../middleware/signUpCheck")
 const authController = require("../api/auth.controller");
 
 

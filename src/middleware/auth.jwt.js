@@ -1,7 +1,7 @@
-//  Process authentication and authorization
-// Check if token is provided, legal or not. We get token from x-access-token of HTTP headers, 
+//  For the process of authentication and authorization
+// We check if token is provided, legal or not. We get token from x-access-token of HTTP headers, 
 // then use jsonwebtoken's verify() function
-
+const config = require("../config/auth.config.js");
 const jwt = require("jsonwebtoken");
 
 
