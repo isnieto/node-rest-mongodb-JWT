@@ -2,7 +2,6 @@
 // already in use in database
 
 // Load Game play model
-const config = require("../config/auth.config.js");
 const GamePlayer = require("../models/gameplay.model.js");
 
 const checkDuplicates = async (req, res, next) => {
@@ -28,7 +27,6 @@ const checkDuplicates = async (req, res, next) => {
           let x = {
             message: `Failed! Username ${req.body.name} is already in use!`,
           };
-          console.log(x);
           res.status(400).send({
             message: `Failed! Username ${req.body.name} is already in use!`,
           });
