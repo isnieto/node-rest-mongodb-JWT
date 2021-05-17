@@ -54,7 +54,7 @@ The project try to implement best practices following the following structure:
 
 
 ### Testing with Postman
-A legal JWT must be added to HTTP __x-access-token Header__ for all Client accesses protected resources like following:
+A legal JWT must be added to HTTP __x-access-token Header__ for all Client access protected resources like following:
 
 <p align="center">
     <img src="https://github.com/uzs7jf/node-rest-mongodb-JWT/blob/main/public/postman.png">
