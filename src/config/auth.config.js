@@ -5,5 +5,5 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports = {
-  SECRET:"secret",
+  SECRET: process.env.ACCESS_TOKEN_SECRET
 };

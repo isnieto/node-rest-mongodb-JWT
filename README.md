@@ -1,6 +1,7 @@
 # Node REST Server + MongoDb + JWT
 
-Goal of the project is to build a API server that supports a simple dice game.
+Goal of the project is to build a API server that supports a simple dice game including middleware for authentication and authorization with JWT.
+
 Following features have been taken in considereation to build the API:
 - In case the result of the two dice is 7, the game is won, otherwise it is lost.
 - In order to play the game, you must register as a player with a name. A player can see a list of all the rolls he has made and the success rate.
@@ -19,14 +20,15 @@ Following features have been taken in considereation to build the API:
 <b>Built with</b>
 - [Node](https://nodejs.org/es/)
 - [Express](https://expressjs.com/es/)
-- [Mongo](https://www.mongodb.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [JWT](https://jwt.io/introduction)
 
 ## Features
+All urls need authorization through JWT method:
 
-Methods	Urls	Actions
-* POST    /                           > Signup new Player
-* POST    /login                      > Login for Players
-* POST    /players     				  > Add/Create a new player
+Methods     	Urls	                       Actions
+* POST    /auth/signup                > Signup new Player
+* POST    /auth/signin                 > Login for Players
 * PUT     /players                    > Update/Modify the name of an existing 
 * POST    /players/{id}/games/        > A player plays one round.
 * DELETE  /players/{id}/games         > Delete all rounds of a player
@@ -50,14 +52,26 @@ The project try to implement best practices following the following structure:
     <img src="https://github.com/uzs7jf/node-rest-mysql/blob/master/public/rest-api-structure.png">
 </p>
 
+
+### Testing with Postman
+A legal JWT must be added to HTTP __x-access-token Header__ for all Client access protected resources like following:
+
+<p align="center">
+    <img src="https://github.com/uzs7jf/node-rest-mongodb-JWT/blob/main/public/postman.png">
+</p>
+
+
 - `server.js` - The entry point to our application. This file defines our express server and connects it to MongoDB using mongoose. It also requires the routes and models we'll be using in the application.
+- `api/` - This folder contains all controller, authentication and game, and corresponding routes data
 - `config/` - This folder contains configuration for passport as well as a central location for configuration/environment variables.
-- `services/` - This folder contains the route definitions for our API.
-- `models/` - This folder contains the schema definitions for our Mongoose models.
+- `models/` - This folder contains the schema definitions for our mongoose and player model..
+- `middleware/` - This folder contains the authorization and authentication to get access to the API.
+- `services/` - This folder contains functions for the game play and for ranking.
+- `models/` - This folder contains the schema definitions for our mongoose and player model.
 
 
 ## Related projects
 Here's a list of the related projects where you can find similar exercises with using other technologies:
 
 - REST APi with NodeJS and MySQL: https://github.com/uzs7jf/node-rest-mysql
-- REST APi with NodeJS and MongoDB and JWT: [still in process]
+- REST APi with NodeJS and MongoDB: https://github.com/uzs7jf/node-srv-mongodb

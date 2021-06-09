@@ -2,7 +2,6 @@
 // already in use in database
 
 // Load Game play model
-const config = require("../config/auth.config.js");
 const GamePlayer = require("../models/gameplay.model.js");
 
 const checkDuplicates = async (req, res, next) => {

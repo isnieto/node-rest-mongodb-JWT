@@ -116,15 +116,16 @@ class Player {
   // Retrieve Ranking of all players
   static async getRankingAll() {
     try {
-      const docs = await GamePlayer.find(
+      const rankings = await GamePlayer.find(
         {},
         { _id: 0, playerId: 1, nickName: 1, games: { score: 1, gameDate: 1 } }
       );
-      const results = await Services.getRanking(docs);
+      const results = await Services.getRanking(rankings);
       // If no data in database
-      if (Object.keys(docs).length === 0) {
+      if (Object.keys(rankings).length === 0) {
         return "No data found!";
       }
+      console.log("ranking" + JSON.stringify(results))
       return results;
     } catch (error) {
       return error;

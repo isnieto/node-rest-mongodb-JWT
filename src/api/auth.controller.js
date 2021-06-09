@@ -53,7 +53,7 @@ module.exports = {
 
         res.status(200).send({
           id: player._id,
-          username: player.username,
+          nickName: player.nickName,
           email: player.email,
           accessToken: token,
         });

@@ -88,7 +88,7 @@ module.exports = {
     }
   },
 
-  // Retrieve all players from database FALTA percentage mig
+  // Retrieve all players from database 
   findAll: async (req, res) => {
     try {
       let results = await Player.getAllPlayers();
