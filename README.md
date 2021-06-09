@@ -28,7 +28,7 @@ All urls need authorization through JWT method:
 
 Methods     	Urls	                       Actions
 * POST    /auth/signup                > Signup new Player
-* POST    /auth/signin                 > Login for Players
+* POST    /auth/signin                > Login for Players (required authorization token)
 * PUT     /players                    > Update/Modify the name of an existing 
 * POST    /players/{id}/games/        > A player plays one round.
 * DELETE  /players/{id}/games         > Delete all rounds of a player
