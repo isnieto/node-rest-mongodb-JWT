@@ -25,12 +25,8 @@ module.exports = {
   },
 
   signIn: async (req, res) => {
-    console.log("entrando en signIn")
-    console.log("config says" + JSON.stringify(config))
     try {
-      console.log("entrando en try")
       GamePlayer.findOne({ nickName: req.body.name }, (err, player) => {
-        console.log("dentro de player.findeOne"+ player)
         if (err) {
           res.status(500).send({ message: err });
           return;

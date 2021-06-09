@@ -77,7 +77,6 @@ module.exports = {
         } else {
           // Check if playerid in database
           const results = await Player.deleteGames(req.params.playerId);
-          console.log("los results son " + results);
           res.status(200).json({
             data: results,
             message: `All games from playerID ${req.params.playerId} deleted`,
@@ -131,7 +130,6 @@ module.exports = {
   findRanking: async (req, res) => {
     try {
       const results = await Player.getRankingAll();
-      //console.log("devuelve result" + results)
       res.status(200).send(results);
     } catch (e) {
       res.status(500).json({ message: e });
@@ -142,7 +140,6 @@ module.exports = {
   findWorst: async (req, res) => {
     try {
       const results = await Player.findWorstPlayer();
-      //console.log("devuelve result" + results)
       res.status(200).send(results);
     } catch (e) {
       res.status(500).json({ message: e });
@@ -153,7 +150,6 @@ module.exports = {
   findBest: async (req, res) => {
     try {
       const results = await Player.findBestPlayer();
-      //console.log("devuelve result" + results)
       res.status(200).send(results);
     } catch (e) {
       res.status(500).json({ message: e });
